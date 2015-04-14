@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/todo.css" rel="stylesheet" />
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+    <body>
+        <form data-bind="submit: sendCreate" >
+            <label for="title">Add a task</label> 
+            <input name="title" type="text" data-bind="value: addItemTitle, valueUpdate: 'afterkeydown' "/>
+            <input type="submit" class="AddItem" title="Add item" disabled="disabled" data-bind="enable: addItemTitle().length > 0 "/>
+        </form>
+        <div>
+            <h1> Items in progress</h1>
+            <table data-bind="foreach: tasks">
+                <tr>
+                    <td>
+                        <input type="checkbox" data-bind="checked: finished"/>
+                        @*<input type="text" data-bind="value: task, valueUpdate: 'afterkeydown' "/>*@
+                        <span data-bind="text: title, css: { finished: finished }" ></span>
+                        <input type="button" value="Remove" data-bind="click: remove"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<script src="~/Scripts/knockout-2.1.0.debug.js"></script>
+<script src="~/Scripts/todo.js"></script>
+
+</html>

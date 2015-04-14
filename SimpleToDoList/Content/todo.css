@@ -1,0 +1,16 @@
+﻿body {
+
+}
+
+.finished {
+        text-decoration: line-through;
+        color: #C0C0C0;
+    }
+
+input[type="submit"].AddItem:disabled {
+    color: red
+}
+
+input[type="submit"].AddItem:enabled {
+    color: green
+}

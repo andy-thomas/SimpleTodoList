@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleToDoList", "SimpleToDoList\SimpleToDoList.csproj", "{0CD5715E-B85B-4365-A81E-0713EBC9F410}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleToDoList.Tests", "SimpleToDoList.Tests\SimpleToDoList.Tests.csproj", "{1BB4C90D-E38D-4AF0-AB64-766343F20F0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CD5715E-B85B-4365-A81E-0713EBC9F410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD5715E-B85B-4365-A81E-0713EBC9F410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD5715E-B85B-4365-A81E-0713EBC9F410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD5715E-B85B-4365-A81E-0713EBC9F410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB4C90D-E38D-4AF0-AB64-766343F20F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB4C90D-E38D-4AF0-AB64-766343F20F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB4C90D-E38D-4AF0-AB64-766343F20F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB4C90D-E38D-4AF0-AB64-766343F20F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
