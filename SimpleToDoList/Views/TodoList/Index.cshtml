@@ -22,6 +22,7 @@
             <table data-bind="foreach: tasks">
                 <tr>
                     <td>
+                        <span data-bind="text: id" class="hideme"></span>
                         <input type="checkbox" data-bind="checked: finished"/>
                         @*<input type="text" data-bind="value: task, valueUpdate: 'afterkeydown' "/>*@
                         <span data-bind="text: title, css: { finished: finished }" ></span>

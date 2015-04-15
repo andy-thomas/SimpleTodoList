@@ -1,6 +1,7 @@
-﻿var Task = function (parent, title, finished) {
+﻿var Task = function (parent, id, title, finished) {
     var self = this;
 
+    self.id = ko.observable(id);
     self.title = ko.observable(title);
     self.finished = ko.observable(finished);
 
@@ -38,23 +39,24 @@ var MyViewModel = function () {
 
     self.addItemTitle = ko.observable("");
 
-    self.add = function (title, finished) {
-        self.tasks.push(new Task(self, title, finished));
+    self.add = function (id, title, finished) {
+        self.tasks.push(new Task(self, id, title, finished));
     };
 
-    self.removeById = function (titleParam) {
+    self.removeById = function (idParam) {
         //http://knockoutjs.com/documentation/observableArrays.html
         self.tasks.remove(
-            function (item) { return item.title() == titleParam; }
+            function (item) { return item.id() == idParam; }
         );
     };
 
-    self.updateById = function (titleParam, finishedParam) {
+    self.updateById = function (idParam, titleParam, finishedParam) {
         // to get the array element, see http://www.adamthings.com/post/2013/08/26/find-element-observable-array-knockoutjs/
         var match = ko.utils.arrayFirst(self.tasks(), function (item) {
-            return titleParam === item.title();
+            return idParam === item.id();
         });
         if (match) {
+            match.title(titleParam);
             match.finished(finishedParam);
         }
     };
@@ -76,16 +78,17 @@ var MyViewModel = function () {
             //        }
             //}
         });
-        self.addItemTitle("");
+        self.addItemTitle(""); // reset the input box on screen
     };
 
     self.sendDelete = function (task) {
         $.ajax({
             url: "/api/todo",
             type: "DELETE",
-            contentType: "application/json",
-            data: ko.toJSON({ 'Title': task.title() })
-
+            contentType: "application/json;charset=utf-8",
+            data: ko.toJSON({ 'Id': task.id() })
+            //data: JSON.stringify({ id: task.id() }) 
+            
             // We dont need this any more, now we have SignalR
             //success: function() {
             //    self.tasks.remove(task);
@@ -99,7 +102,7 @@ var MyViewModel = function () {
             url: "/api/todo",
             type: "PUT",
             contentType: "application/json",
-            data: ko.toJSON({ 'Title': task.title(), 'Finished': task.finished() })
+            data: ko.toJSON({ 'Id': task.id(), 'Title': task.title(), 'Finished': task.finished() })
         });
     };
 };
@@ -113,13 +116,13 @@ $(function () {
     
     // Functions which are called by the Signal TodoHub
     hub.client.addItem = function(item) {
-        viewModel.add(item.Title, item.Finished);
+        viewModel.add(item.Id, item.Title, item.Finished);
     };
     hub.client.deleteItem = function (item) {
-        viewModel.removeById(item.Title);
+        viewModel.removeById(item.Id);
     };
     hub.client.updateItem = function (item) {
-        viewModel.updateById(item.Title, item.Finished);
+        viewModel.updateById(item.Id, item.Title, item.Finished);
     };
 
     $.connection.hub.start();
@@ -128,7 +131,7 @@ $(function () {
     $.get("api/todo", function (items) {
         $.each(items, function (idx, item) {
             //alert(item.Title);
-            viewModel.add(item.Title, item.Finished);
+            viewModel.add(item.Id, item.Title, item.Finished);
         });
     }, "json");
 

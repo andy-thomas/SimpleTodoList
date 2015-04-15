@@ -14,11 +14,11 @@ namespace SimpleToDoList.Controllers
 
     public class TodoController : ApiController
     {
-        public static IList<Task> TaskList = new List<Task>()
-                       {
-                           new Task("Fifth task", true),
-                           new Task("Sixth task", false),
-                           new Task("Seventh task", true)
+        public static IList<Task> TaskList = new List<Task>
+                                                 {
+                           new Task(Guid.NewGuid(), "Fifth task", true),
+                           new Task(Guid.NewGuid(), "Sixth task", false),
+                           new Task(Guid.NewGuid(), "Seventh task", true)
                        };
 
         //public TodoHub hub = new TodoHub();
@@ -31,34 +31,34 @@ namespace SimpleToDoList.Controllers
         [HttpPost]
         public HttpResponseMessage PostCreateTask([FromBody]Task task)
         {
+            // Generate a new id
+            task.Id = Guid.NewGuid();
+
             // Add the item to the repo
             TaskList.Add(task);
 
             // Notify the connected items
             TodoHub.AddItem(task);
 
-            // Return the new item inside a 201 response
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { Title = task.Title, Finished = task.Finished});
+            // Return the new item, complete with the new Id, inside a 201 response
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { Id = task.Id, Title = task.Title, Finished = task.Finished });
             string link = Url.Link("DefaultApi", new { controller = "Todo" });
             response.Headers.Location = new Uri(link);
             return response;
         }
 
         [HttpDelete]
-        public void DeleteTask(Task task)
+        public void DeleteTask(Task taskParam)
         {
-            if (task == null || string.IsNullOrEmpty(task.Title))
-                return;
+            Task task = TaskList.FirstOrDefault(t => t.Id == taskParam.Id);
 
-            Task item = TaskList.FirstOrDefault(t => t.Title == task.Title);
-
-            if (item == null)
+            if (task == null)
             {
                 throw new HttpResponseException(
                     Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            TaskList.Remove(item);
+            TaskList.Remove(task);
 
             // Notify the connected items
             TodoHub.DeleteItem(task);
@@ -70,7 +70,7 @@ namespace SimpleToDoList.Controllers
             if (task == null || string.IsNullOrEmpty(task.Title))
                 return null;
 
-            Task item = TaskList.FirstOrDefault(t => t.Title == task.Title);
+            Task item = TaskList.FirstOrDefault(t => t.Id == task.Id);
 
             if (item == null)
             {
@@ -79,6 +79,7 @@ namespace SimpleToDoList.Controllers
             }
 
             item.Finished = task.Finished;
+            item.Title = task.Title.Trim();
 
             // Notify the connected items
             TodoHub.UpdateItem(task);
