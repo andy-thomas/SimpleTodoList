@@ -15,6 +15,6 @@ input[type="submit"].AddItem:enabled {
     color: green
 }
 
-/*span.hideme {
+span.hideme {
     display: none
-}*/
+}

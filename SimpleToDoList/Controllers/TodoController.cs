@@ -16,9 +16,9 @@ namespace SimpleToDoList.Controllers
     {
         public static IList<Task> TaskList = new List<Task>
                                                  {
-                           new Task(Guid.NewGuid(), "Fifth task", true),
-                           new Task(Guid.NewGuid(), "Sixth task", false),
-                           new Task(Guid.NewGuid(), "Seventh task", true)
+                           new Task(Guid.NewGuid(), "Fifth task", new DateTime(2015,5,5).ToUniversalTime(), true),
+                           new Task(Guid.NewGuid(), "Sixth task", DateTime.Today.AddDays(15).ToUniversalTime(), false),
+                           new Task(Guid.NewGuid(), "Seventh task", DateTime.Today.AddDays(7).ToUniversalTime(), true)
                        };
 
         //public TodoHub hub = new TodoHub();
@@ -80,6 +80,7 @@ namespace SimpleToDoList.Controllers
 
             item.Finished = task.Finished;
             item.Title = task.Title.Trim();
+            item.DueDate = task.DueDate;
 
             // Notify the connected items
             TodoHub.UpdateItem(task);

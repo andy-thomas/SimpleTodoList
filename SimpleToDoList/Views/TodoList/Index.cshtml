@@ -3,6 +3,8 @@
 }
 
 <!DOCTYPE html>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/todo.css" rel="stylesheet" />
 <html>
@@ -15,6 +17,8 @@
         <form data-bind="submit: sendCreate" >
             <label for="title">Add a task</label> 
             <input name="title" type="text" data-bind="value: addItemTitle, valueUpdate: 'afterkeydown' "/>
+            <label for="duedate">Task due date</label>
+            <input name="duedate" data-bind="datepicker: addItemDueDate, datepickerOptions: { minDate: new Date() }" />
             <input type="submit" class="AddItem" value="Add a task" title="Add item" disabled="disabled" data-bind="enable: addItemTitle().length > 0 "/>
         </form>
         <div>
@@ -26,6 +30,8 @@
                         <input type="checkbox" data-bind="checked: finished"/>
                         @*<input type="text" data-bind="value: task, valueUpdate: 'afterkeydown' "/>*@
                         <span data-bind="text: title, css: { finished: finished }" ></span>
+                        <input data-bind="datepicker: dueDate, datepickerOptions: { minDate: new Date() }" />
+                        @*<span data-bind="text: dueDate" ></span>*@
                         <input type="button" value="Remove" data-bind="click: remove"/>
                     </td>
                 </tr>
@@ -35,8 +41,10 @@
     
 <script src="~/Scripts/jquery-1.7.1.js"></script>
 <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.20.js"></script>
 <script src="~/Scripts/knockout-2.1.0.debug.js"></script>
 <script src="~/signalr/hubs"></script>
+<script src="~/Scripts/todo-ko-bindinghandlers.js"></script>
 <script src="~/Scripts/todo.js"></script>
 
 </html>

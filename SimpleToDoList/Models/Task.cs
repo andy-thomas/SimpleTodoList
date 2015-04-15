@@ -6,10 +6,11 @@ namespace SimpleToDoList.Models
     [DataContract]
     public class Task
     {
-        public Task(Guid id, string title, bool finished)
+        public Task(Guid id, string title, DateTime dueDate, bool finished)
         {
             Id = id;
             Title = title;
+            DueDate = dueDate;
             Finished = finished;
         }
 
@@ -18,6 +19,9 @@ namespace SimpleToDoList.Models
 
         [DataMember]
         public string Title { get; set; }
+
+        [DataMember]
+        public DateTime DueDate { get; set; }
 
         [DataMember]
         public bool Finished { get; set; }
