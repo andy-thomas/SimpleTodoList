@@ -1,8 +1,14 @@
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\SimpleToDoList.Tests.dll.config
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\SimpleToDoList.Tests.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\SimpleToDoList.Tests.pdb
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.Security.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Owin.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\SimpleToDoList.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\System.Web.Helpers.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\System.Web.Mvc.dll
@@ -22,6 +28,11 @@ C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\D
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\DotNetOpenAuth.OpenId.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Antlr3.Runtime.dll
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\SimpleToDoList.pdb
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Microsoft.Owin.Security.xml
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\System.Web.Helpers.xml
 C:\Projects\TutorialsQuickstarts\SimpleToDoList\SimpleToDoList.Tests\bin\Debug\System.Web.Mvc.xml

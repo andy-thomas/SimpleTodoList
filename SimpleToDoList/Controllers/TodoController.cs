@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SimpleToDoList.Hubs;
 using SimpleToDoList.Models;
 
 namespace SimpleToDoList.Controllers
@@ -20,6 +21,8 @@ namespace SimpleToDoList.Controllers
                            new Task("Seventh task", true)
                        };
 
+        //public TodoHub hub = new TodoHub();
+
         public IEnumerable<Task> GetToDoItems()
         {
             return TaskList;
@@ -30,6 +33,9 @@ namespace SimpleToDoList.Controllers
         {
             // Add the item to the repo
             TaskList.Add(task);
+
+            // Notify the connected items
+            TodoHub.AddItem(task);
 
             // Return the new item inside a 201 response
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { Title = task.Title, Finished = task.Finished});
@@ -53,6 +59,9 @@ namespace SimpleToDoList.Controllers
             }
 
             TaskList.Remove(item);
+
+            // Notify the connected items
+            TodoHub.DeleteItem(task);
         }
 
         [HttpPut]
@@ -70,6 +79,9 @@ namespace SimpleToDoList.Controllers
             }
 
             item.Finished = task.Finished;
+
+            // Notify the connected items
+            TodoHub.UpdateItem(task);
 
             return item;
         }
